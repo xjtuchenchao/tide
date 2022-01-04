@@ -11,7 +11,7 @@ import json
 import os
 
 def default_name(path:str) -> str:
-	return os.path.splitext(os.path.basename(path))[0]
+	return os.path.splitext(os.path.basename(path))[0]    # 取文件名（不包含扩展名）
 
 def get_tide_path():
 	if 'TIDE_PATH' in os.environ:
@@ -72,7 +72,8 @@ def COCO(path:str=None, name:str=None, year:int=2017, ann_set:str='val', force_d
 
 		path = os.path.join(path, 'annotations', 'instances_{}{}.json'.format(ann_set, year))
 	
-	if name is None: name = default_name(path)
+	if name is None: 
+		name = default_name(path)
 	
 	with open(path, 'r') as json_file:
 		cocojson = json.load(json_file)
@@ -99,12 +100,16 @@ def COCO(path:str=None, name:str=None, year:int=2017, ann_set:str='val', force_d
 		image  = ann['image_id']
 		_class = ann['category_id']
 		box    = ann['bbox']
-		mask   = f.toRLE(ann['segmentation'], image_lookup[image]['width'], image_lookup[image]['height'])
-		
-		if ann['iscrowd']: data.add_ignore_region(image, _class, box, mask)
-		else:              data.add_ground_truth (image, _class, box, mask)
+		# mask   = f.toRLE(ann['segmentation'], image_lookup[image]['width'], image_lookup[image]['height'])
+		mask = None
+
+		if ann['iscrowd']: 
+			data.add_ignore_region(image, _class, box, mask)
+		else:              
+			data.add_ground_truth (image, _class, box, mask)
 	
 	return data
+
 
 def COCOResult(path:str, name:str=None) -> Data:
 	""" Loads predictions from a COCO-style results file. """
@@ -115,7 +120,7 @@ def COCOResult(path:str, name:str=None) -> Data:
 
 	data = Data(name)
 
-	for det in dets:
+	for det in dets:    # TODO:将mmdetection的结果保存为这样的格式
 		image = det['image_id']
 		_cls  = det['category_id']
 		score = det['score']

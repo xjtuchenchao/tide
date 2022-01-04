@@ -419,7 +419,7 @@ class TIDE:
 
 	# Threshold splits for different challenges
 	COCO_THRESHOLDS = [0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95]
-	VOL_THRESHOLDS  = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9] 
+	VOL_THRESHOLDS  = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]    # TODO:这是什么东西？
 
 	# The modes of evaluation
 	BOX  = 'bbox'
@@ -439,7 +439,7 @@ class TIDE:
 
 		self.qualifiers = OrderedDict()
 
-		self.plotter = P.Plotter()
+		self.plotter = P.Plotter()    # 
 
 
 	def evaluate(self, gt:Data, preds:Data, pos_threshold:float=None, background_threshold:float=None,

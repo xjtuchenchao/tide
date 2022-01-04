@@ -1,0 +1,35 @@
+<annotation verified="yes">
+	<folder>JPEGImages_6</folder>
+	<filename>DiaoChe00009.jpg</filename>
+	<path>test</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>2592</width>
+		<height>1944</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	
+	
+	
+	
+	<object>
+		<name>DiaoChe</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>1910</xmin>
+			<ymin>666</ymin>
+			<xmax>2035</xmax>
+			<ymax>854</ymax>
+		</bndbox>
+	</object>
+	
+	<scenes>
+		<name>highway</name>
+		<name>country</name>
+	</scenes>
+</annotation>
